@@ -5,17 +5,19 @@ import java.util.List;
 import javax.management.Query;
 import javax.persistence.*;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.fabricadeprogramador.entidade.Usuario;
 
-public class UsuarioDAO {
+@Repository
+public class UsuarioDAO {	
 	
-	//aplicationcontext.xml
-	
-	EntityManager em;	
+//	@PersistenceContext
+	EntityManager em = Persistence.createEntityManagerFactory("fabricaweb2").createEntityManager();	
 		
-	public UsuarioDAO(EntityManager em) {
-		this.em = em;
-	}
+//	public UsuarioDAO(EntityManager em) {
+//		this.em = em;
+//	}
 	
 	public void salvar(Usuario usuario) {
 		em.getTransaction().begin();
